@@ -1,0 +1,160 @@
+@import "tailwindcss";
+
+/* ---------- Theme tokens -> Tailwind utilities ---------- */
+@theme inline {
+  --color-primary:       var(--theme-primary);
+  --color-primary-ink:   var(--theme-primary-ink);
+  --color-accent:        var(--theme-accent);
+  --color-page:          var(--theme-page);
+  --color-surface:       var(--theme-surface);
+  --color-ink:           var(--theme-ink);
+  --color-ink-muted:     var(--theme-ink-muted);
+  --color-border:        var(--theme-border);
+  --color-stripe:        var(--theme-stripe);
+  --color-warning:       var(--theme-warning);
+  --color-warning-bg:    var(--theme-warning-bg);
+
+  --font-sans:    var(--font-inter);
+  --font-display: var(--font-fraunces);
+}
+
+/* ---------- Default theme ---------- */
+:root,
+[data-theme="default"] {
+  --theme-primary:      #b3261e;
+  --theme-primary-ink:  #ffffff;
+  --theme-accent:       #b3261e;
+  --theme-page:         #faf9f7;
+  --theme-surface:      #ffffff;
+  --theme-ink:          #111111;
+  --theme-ink-muted:    #6b6b6b;
+  --theme-border:       #e5e3de;
+  --theme-stripe:       #f2f1ee;
+  --theme-warning:      #b3261e;
+  --theme-warning-bg:   #fdf2f1;
+}
+
+
+/* ---------- Future themes go here ---------- */
+
+[data-theme="agwic-classic"] {
+  --theme-primary:      #122d64;   /* navy instead of red */
+  --theme-primary-ink:  #ffffff;
+  --theme-accent:       #122d64;
+  --theme-page:         #f7f7f4;
+  --theme-surface:      #ffffff;
+  --theme-ink:          #111111;
+  --theme-ink-muted:    #5e5e5e;
+  --theme-border:       #dedbd4;
+  --theme-stripe:       #f0eee8;
+  --theme-warning:      #b3261e;
+  --theme-warning-bg:   #fdf2f1;
+}
+
+[data-theme="winter-holiday"] {
+  --theme-primary:      #a32020;   /* deep Christmas red */
+  --theme-primary-ink:  #ffffff;
+  --theme-accent:       #1f5c3a;   /* forest green */
+  --theme-page:         #fdfaf3;   /* warm cream */
+  --theme-surface:      #ffffff;
+  --theme-ink:          #1a1a1a;
+  --theme-ink-muted:    #6b6b6b;
+  --theme-border:       #e8e3d8;
+  --theme-stripe:       #f5f1e6;
+  --theme-warning:      #a32020;
+  --theme-warning-bg:   #fbeaea;
+}
+
+[data-theme="valentines"] {
+  --theme-primary:      #b8234a;   /* deep rose */
+  --theme-primary-ink:  #ffffff;
+  --theme-accent:       #d47a8a;
+  --theme-page:         #fdf6f7;
+  --theme-surface:      #ffffff;
+  --theme-ink:          #1c1215;
+  --theme-ink-muted:    #6b6165;
+  --theme-border:       #ead9de;
+  --theme-stripe:       #f8ecef;
+  --theme-warning:      #b8234a;
+  --theme-warning-bg:   #fbe9ee;
+}
+
+[data-theme="summer"] {
+  --theme-primary:      #0e6b7a;   /* deep teal */
+  --theme-primary-ink:  #ffffff;
+  --theme-accent:       #f08a4b;   /* coral */
+  --theme-page:         #fbfaf5;   /* warm off-white */
+  --theme-surface:      #ffffff;
+  --theme-ink:          #14282b;
+  --theme-ink-muted:    #5e6e70;
+  --theme-border:       #e2e6e0;
+  --theme-stripe:       #f1f0e8;
+  --theme-warning:      #c04a1a;
+  --theme-warning-bg:   #fcefe6;
+}
+
+[data-theme="fall"] {
+  --theme-primary:      #a2441f;   /* burnt orange */
+  --theme-primary-ink:  #ffffff;
+  --theme-accent:       #7a3a1a;
+  --theme-page:         #fbf7ef;   /* cream */
+  --theme-surface:      #ffffff;
+  --theme-ink:          #2a1d14;
+  --theme-ink-muted:    #6b5d52;
+  --theme-border:       #e8dfd0;
+  --theme-stripe:       #f4ecdf;
+  --theme-warning:      #a2441f;
+  --theme-warning-bg:   #faeee5;
+}
+
+[data-theme="midnight"] {
+  --theme-primary:      #d9483f;
+  --theme-primary-ink:  #ffffff;
+  --theme-accent:       #d9483f;
+  --theme-page:         #141210;   /* near-black, warm */
+  --theme-surface:      #1e1b18;
+  --theme-ink:          #f0ebe4;
+  --theme-ink-muted:    #9b9691;
+  --theme-border:       #302c28;
+  --theme-stripe:       #221f1c;
+  --theme-warning:      #d9483f;
+  --theme-warning-bg:   #3a1e1a;
+}
+
+
+
+/* ---------- Base ---------- */
+html {
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--theme-page);
+  color: var(--theme-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+/* ---------- Fine print utility ---------- */
+.fine-print {
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  color: var(--theme-ink-muted);
+}
+
+.fine-print a {
+  color: var(--theme-ink-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,3 +1,5 @@
+import type { CategorySlug } from "@/lib/categories";
+
 export type Spec = { label: string; value: string };
 export type Bullet = string;
 export type Footnote = { marker: string; text: string };
@@ -26,7 +28,7 @@ export type Product = {
   brand: string;
   priceCents: number;
   compareAtCents?: number;
-  category: string; // from lib/categories.ts
+  category: CategorySlug;
   /** One-line teaser. Card + share cards + meta description. */
   blurb: string;
   /** Amazon-style feature bullets. Use * † ‡ § ¶ markers to attach footnotes. */
