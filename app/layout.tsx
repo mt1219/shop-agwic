@@ -3,6 +3,7 @@ import { Inter, Fraunces } from 'next/font/google'
 import '@/styles/global.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { RouteTracker } from '@/components/RouteTracker'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -47,6 +48,7 @@ export default function RootLayout({
       className={`${inter.variable} ${fraunces.variable}`}
     >
       <body className="min-h-screen flex flex-col">
+        <RouteTracker />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

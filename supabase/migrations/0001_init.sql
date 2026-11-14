@@ -70,7 +70,7 @@ create table if not exists reviews (
   is_seed            boolean not null default false,
   verified_purchase  boolean not null default false,
   helpful_count      int not null default 0,
-  published          boolean not null default true,
+  published          boolean not null default false,
   created_at         timestamptz not null default now()
 );
 
