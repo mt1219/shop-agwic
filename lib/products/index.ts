@@ -1,7 +1,7 @@
 import type { Product } from "./types";
+import { items as items2026 } from "./items/2026";
 
-// Products are added here in Message 2. Empty for now.
-export const products: Product[] = [];
+export const products: Product[] = [...items2026];
 
 export function getProduct(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);

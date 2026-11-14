@@ -1,0 +1,131 @@
+import type { Product } from "@/lib/products/types";
+
+export const product = {
+  slug: "permission-to-leave-the-party",
+  name: "Permission to Leave the Party (PDF)",
+  brand: "AGWIC Social",
+  priceCents: 299,
+  category: "office",
+  blurb: "One page. Signed. Notarized in spirit.",
+  bullets: [
+    "ONE (1) PAGE PDF*",
+    "DIGITALLY SIGNED**",
+    "NOTARIZED IN SPIRIT†",
+    "LAMINATE-READY‡",
+    "NON-TRANSFERABLE§",
+    "EFFECTIVE IMMEDIATELY¶",
+  ],
+  bulletsFootnotes: [
+    { marker: "*", text: "One page. PDF format. Printer not included." },
+    {
+      marker: "**",
+      text: "Digitally signed by us. Not by you. That is the point.",
+    },
+    { marker: "†", text: "Not notarized in fact. We are not notaries." },
+    { marker: "‡", text: "Can be laminated. Will look official laminated." },
+    {
+      marker: "§",
+      text: "The permission belongs to you. Please do not give it away.",
+    },
+    {
+      marker: "¶",
+      text: "Effective immediately upon presentation. To whom, you will know.",
+    },
+  ],
+  about: `You are at a party. You have been at the party for an hour longer than you intended. You are ready to leave. You are not sure how to leave.
+
+The Permission to Leave the Party (PDF) is a one-page document, digitally signed, that grants you permission to leave any social gathering. Present it to yourself. You will understand. You will leave.
+
+Backed by our "just go home" guarantee. Terms apply. You may apply.`,
+  specs: [
+    { label: "Brand", value: "AGWIC Social" },
+    { label: "Format", value: "PDF" },
+    { label: "Pages", value: "1" },
+    { label: "File Size", value: "~85 KB" },
+    { label: "Signature", value: "Digital (by us)" },
+    { label: "Notarization", value: "In spirit" },
+    { label: "Transferable", value: "No" },
+    { label: "Printer", value: "Not included" },
+  ],
+  customersSay: `Customers say the Permission PDF is "effective," "life-changing," and "the only reason I am not still at that party." AI-generated from the text of customer reviews.`,
+  qa: [
+    {
+      question: "Will this work at work events?",
+      answer: "Yes. It works especially at work events.",
+      askedBy: "A Customer",
+    },
+    {
+      question: "Can I use it more than once?",
+      answer: "Yes. It is yours.",
+      askedBy: "Another Customer",
+    },
+  ],
+  terms: [
+    "You are purchasing one (1) PDF.",
+    "The PDF grants you permission to leave the party.",
+    "The PDF does not physically remove you from the party.",
+    "You must leave the party yourself.",
+    "The PDF is digitally signed by us. It is not digitally signed by anyone else.",
+    "The PDF is not notarized. It is notarized in spirit.",
+    "You may laminate the PDF. We recommend it.",
+    "You may show the PDF to anyone. They will understand.",
+    "You may not show the PDF to the host. The host will not understand.",
+    "All sales final. All parties final.",
+  ],
+  warnings: [
+    "WARNING: You are allowed to leave the party without this PDF. You do not need our permission. But it helps.",
+  ],
+  heroPath: "permission-to-leave-the-party/hero.webp",
+  galleryPaths: ["permission-to-leave-the-party/1.webp"],
+  stockLabel: "Instant Download",
+  shipsIn: "Delivered immediately",
+  soldBy: "Sold by AGWIC Social · Fulfilled by AGWIC",
+  relatedSlugs: ["emotional-support-brick", "watched-subscription"],
+  seedReviews: [
+    {
+      authorName: "Introvert",
+      rating: 5,
+      title: "I left",
+      body: "I printed it. I laminated it. I put it in my jacket pocket. When I was ready to leave, I took it out, looked at it, and left. Nobody stopped me. I do not know if they saw the PDF. I do not think they saw the PDF. It does not matter. I left. Five stars.",
+      verifiedPurchase: true,
+      helpfulCount: 892,
+      createdAt: "2025-10-15",
+    },
+    {
+      authorName: "A. Party Guest",
+      rating: 5,
+      title: "For the office party",
+      body: 'I bought this for the office holiday party. I showed it to my manager. My manager said "what is that." I said "permission." My manager said "oh." I left. Five stars.',
+      verifiedPurchase: true,
+      helpfulCount: 445,
+      createdAt: "2025-12-08",
+    },
+    {
+      authorName: "Socially Obligated",
+      rating: 4,
+      title: "Works, but",
+      body: "It works. But you have to actually leave. The PDF does not leave for you. Four stars.",
+      verifiedPurchase: true,
+      helpfulCount: 201,
+      createdAt: "2026-01-12",
+    },
+    {
+      authorName: "Extrovert",
+      rating: 1,
+      title: "Pointless",
+      body: "I do not understand this product. Why would you want to leave the party. The party is the best part. One star.",
+      verifiedPurchase: true,
+      helpfulCount: 788,
+      createdAt: "2025-11-03",
+    },
+    {
+      authorName: "T. Jones",
+      rating: 5,
+      title: "Works",
+      body: "It works. Five stars. No notes.",
+      verifiedPurchase: true,
+      helpfulCount: 45,
+      createdAt: "2025-08-20",
+    },
+  ],
+} satisfies Product;

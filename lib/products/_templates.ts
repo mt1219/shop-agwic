@@ -3,11 +3,12 @@ import type { Product } from "./types";
 /**
  * HOW TO ADD A PRODUCT
  *
- * 1. Copy this file to `lib/products/<slug>.ts` (slug = the product slug).
- * 2. Fill in every field. The `satisfies Product` at the bottom catches
- *    missing fields at build time.
+ * 1. Copy this file to `lib/products/items/<year>/<slug>.ts`.
+ *    `<year>` = the year you're adding the product (e.g. `2026`).
+ * 2. Add one import + one array item to `lib/products/items/<year>/index.ts`.
  * 3. Upload images to the `product-images` Supabase bucket under `<slug>/`
  *    (hero.webp, 1.webp, 2.webp, ...) and insert rows into `product_images`.
+ *    Or run `npm run new:product` (when built) to automate this.
  * 4. Add the product to `lib/products/index.ts`.
  * 5. Push. Vercel deploys. Done.
  *
