@@ -35,6 +35,11 @@ export const categories = [
     description:
       "For the young. And the young at heart. And the young at everyone.",
   },
+  {
+    slug: "beauty-personal-care",
+    name: "Beauty & Personal Care",
+    description: "For the person you are. And the person you are becoming.",
+  },
 ] as const;
 
 export type Category = (typeof categories)[number];
