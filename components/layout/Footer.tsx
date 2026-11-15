@@ -78,6 +78,10 @@ export async function Footer() {
                         <Link href="/legal/terms">See full legal terms for details.</Link> We&apos;re serious
                         about that part.
                     </p>
+
+                    <p>
+                        AGWIC · 1 Synergy Plaza, Wilmington, DE 19801
+                    </p>
                     <p>
                         © {year} American Global Worldwide International Commerce. All rights reserved. All
                         wrongs reversed.

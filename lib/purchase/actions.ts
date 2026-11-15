@@ -55,13 +55,17 @@ export async function clearCartAction(): Promise<void> {
  */
 export async function buyCartAction(): Promise<void> {
   const cart = await readCart();
+  const seed = cart
+    .map((item) => `${item.slug}x${item.qty}`)
+    .sort()
+    .join(",");
   for (const item of cart) {
     await recordStat(item.slug, "purchase");
   }
   await writeCart([]);
   revalidatePath("/cart");
   revalidatePath("/", "layout");
-  redirect("/bought?from=cart");
+  redirect(`/bought?from=cart&seed=${encodeURIComponent(seed)}`);
 }
 
 /**

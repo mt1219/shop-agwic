@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import { Suspense } from 'react'
 import { getProduct } from '@/lib/products'
-import { getBuyMessage } from '@/lib/buy-messages'
+import { getBuyMessage, getCartBuyMessage } from '@/lib/buy-messages'
 import type { Metadata } from 'next'
+
 
 export const metadata: Metadata = {
     title: 'Purchase Complete — AGWIC',
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
 export default function BoughtPage({
     searchParams,
 }: {
-    searchParams: Promise<{ item?: string }>
+    searchParams: Promise<{ item?: string; from?: string; seed?: string }>
 }) {
     return (
         <div className="mx-auto max-w-2xl px-4 py-16">
@@ -26,27 +27,23 @@ export default function BoughtPage({
 async function BoughtContent({
     searchParams,
 }: {
-    searchParams: Promise<{ item?: string; from?: string }>
+    searchParams: Promise<{ item?: string; from?: string; seed?: string }>
 }) {
-    const { item, from } = await searchParams
+    const { item, from, seed } = await searchParams
 
     // Cart purchase path — ?from=cart
     if (from === 'cart' || !item) {
+        const message = getCartBuyMessage(seed ?? 'empty')
+
         return (
             <div className="border border-border bg-surface rounded p-8 md:p-12 text-center">
                 <p className="text-xs uppercase tracking-widest text-primary mb-4">
                     Purchase Complete
                 </p>
 
-                <h1 className="font-display text-2xl md:text-3xl text-ink mb-4">
-                    Your items are imaginary. Your cart has been cleared. Your
-                    satisfaction is imaginary.
+                <h1 className="font-display text-2xl md:text-3xl text-ink mb-8">
+                    {message}
                 </h1>
-
-                <p className="text-sm text-ink-muted mb-8 max-w-md mx-auto">
-                    Nothing has been shipped. Nothing will be
-                    shipped. Your cart has been cleared anyway.
-                </p>
 
                 <div className="flex gap-3 justify-center flex-wrap">
                     <Link
@@ -82,14 +79,9 @@ async function BoughtContent({
                 Purchase Complete
             </p>
 
-            <h1 className="font-display text-2xl md:text-3xl text-ink mb-4">
+            <h1 className="font-display text-2xl md:text-3xl text-ink mb-8">
                 {message}
             </h1>
-
-            <p className="text-sm text-ink-muted mb-8 max-w-md mx-auto">
-                Nothing has been shipped. Nothing will be
-                shipped. Nothing was ever going to be shipped.
-            </p>
 
             <div className="flex gap-3 justify-center flex-wrap">
                 {product ? (
