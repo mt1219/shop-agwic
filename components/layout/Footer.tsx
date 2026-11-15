@@ -70,8 +70,8 @@ export async function Footer() {
 
                 <div className="fine-print mt-10 pt-6 border-t border-border space-y-2">
                     <p>
-                        AGWIC is a subsidiary of American Global Worldwide International Commerce, which is a
-                        subsidiary of AGWIC.
+                        AGWIC is a subsidiary of American Global Worldwide International Corporation, which is a
+                        subsidiary of American Global Worldwide International Commerce.
                     </p>
                     <p>
                         Nothing here is for sale. Do not cork, guillotine, or otherwise engage a whistler, a squirrel, or a noisy neighbor.{' '}
@@ -80,7 +80,7 @@ export async function Footer() {
                     </p>
 
                     <p>
-                        AGWIC · 1 Synergy Plaza, Wilmington, DE 19801
+                        American Global Worldwide Integrated Commerce · 1 Synergy Plaza, Wilmington, DE 19801
                     </p>
                     <p>
                         © {year} American Global Worldwide International Commerce. All rights reserved. All
