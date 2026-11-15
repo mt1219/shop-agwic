@@ -74,8 +74,7 @@ export async function Footer() {
                         subsidiary of AGWIC.
                     </p>
                     <p>
-                        This is a parody store. Nothing here is for sale. Do not cork, guillotine, or otherwise
-                        engage a whistler, a squirrel, or a noisy neighbor.{' '}
+                        Nothing here is for sale. Do not cork, guillotine, or otherwise engage a whistler, a squirrel, or a noisy neighbor.{' '}
                         <Link href="/legal/terms">See full legal terms for details.</Link> We&apos;re serious
                         about that part.
                     </p>

@@ -74,7 +74,7 @@ You can cancel anytime. The feeling stays.`,
     "All sales final. All feelings final.",
   ],
   warnings: [
-    "WARNING: This is not a real subscription. There is no real feeling. This is a parody store. Please do not enter payment information.",
+    "WARNING: This is not a real subscription. There is no real feeling. Please do not enter payment information.",
   ],
   heroPath: "watched-subscription/hero.webp",
   galleryPaths: ["watched-subscription/1.webp"],

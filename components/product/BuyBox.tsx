@@ -20,7 +20,7 @@ export function BuyBox({ product }: { product: Product }) {
         trackClick('add-to-cart-click', { product_slug: product.slug })
         startTransition(async () => {
             await addToCartAction(product.slug)
-            showToast('Added to cart. The cart is imaginary. So is the cork.')
+            showToast('Added to cart. The cart is still imaginary. But it has items now.')
         })
     }
 

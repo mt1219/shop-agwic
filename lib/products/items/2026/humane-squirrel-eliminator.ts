@@ -72,7 +72,7 @@ The Humane Squirrel Eliminator™ is a precision-engineered, single-squirrel gui
   ],
   termsRef: "section-6",
   warnings: [
-    "WARNING: This is a parody store. Do not guillotine anything. Not a squirrel. Not a whistler. Not a person. Not a sandwich. Nothing. We are serious about that part.",
+    "WARNING: Do not guillotine anything. Not a squirrel. Not a whistler. Not a person. Not a sandwich. Nothing. We are serious about that part.",
   ],
   heroPath: "humane-squirrel-eliminator/hero.webp",
   galleryPaths: [

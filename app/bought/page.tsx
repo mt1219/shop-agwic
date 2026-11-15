@@ -26,14 +26,55 @@ export default function BoughtPage({
 async function BoughtContent({
     searchParams,
 }: {
-    searchParams: Promise<{ item?: string }>
+    searchParams: Promise<{ item?: string; from?: string }>
 }) {
-    const { item } = await searchParams
-    const product = item ? getProduct(item) : undefined
+    const { item, from } = await searchParams
+
+    // Cart purchase path — ?from=cart
+    if (from === 'cart' || !item) {
+        return (
+            <div className="border border-border bg-surface rounded p-8 md:p-12 text-center">
+                <p className="text-xs uppercase tracking-widest text-primary mb-4">
+                    Purchase Complete
+                </p>
+
+                <h1 className="font-display text-2xl md:text-3xl text-ink mb-4">
+                    Your items are imaginary. Your cart has been cleared. Your
+                    satisfaction is imaginary.
+                </h1>
+
+                <p className="text-sm text-ink-muted mb-8 max-w-md mx-auto">
+                    Nothing has been shipped. Nothing will be
+                    shipped. Your cart has been cleared anyway.
+                </p>
+
+                <div className="flex gap-3 justify-center flex-wrap">
+                    <Link
+                        href="/shop"
+                        className="inline-flex items-center h-10 px-5 bg-primary text-primary-ink rounded text-sm font-semibold hover:opacity-90 transition-opacity"
+                    >
+                        Continue Shopping
+                    </Link>
+                    <Link
+                        href="/"
+                        className="inline-flex items-center h-10 px-5 border border-border rounded text-sm text-ink hover:border-ink transition-colors"
+                    >
+                        Home
+                    </Link>
+                </div>
+
+                <p className="fine-print mt-10 pt-6 border-t border-border">
+                    Order #<span className="font-mono">AGWIC-CART</span>
+                    {' · '}Estimated delivery: Eventually. See §7.
+                </p>
+            </div>
+        )
+    }
+
+    // Single-item purchase path — ?item=slug
+    const product = getProduct(item)
     const productName = product?.name ?? 'your item'
-    const message = item
-        ? getBuyMessage(item, productName)
-        : 'Thank you for your purchase. You did not purchase anything. We are aware.'
+    const message = getBuyMessage(item, productName)
 
     return (
         <div className="border border-border bg-surface rounded p-8 md:p-12 text-center">
@@ -46,7 +87,7 @@ async function BoughtContent({
             </h1>
 
             <p className="text-sm text-ink-muted mb-8 max-w-md mx-auto">
-                This is a parody store. Nothing has been shipped. Nothing will be
+                Nothing has been shipped. Nothing will be
                 shipped. Nothing was ever going to be shipped.
             </p>
 
@@ -75,7 +116,7 @@ async function BoughtContent({
             </div>
 
             <p className="fine-print mt-10 pt-6 border-t border-border">
-                Order #<span className="font-mono">{generateOrderNumber(item ?? 'none')}</span>
+                Order #<span className="font-mono">{generateOrderNumber(item)}</span>
                 {' · '}Estimated delivery: Eventually. See §7.
             </p>
         </div>

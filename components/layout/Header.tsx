@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { SearchBar } from './SearchBar'
+import { CartBadge } from './CartBadge'
 import { categories } from '@/lib/categories'
 import { Suspense } from 'react'
 
@@ -33,12 +34,9 @@ export function Header() {
                     <Link href="/account" className="hover:text-ink transition-colors" aria-label="Account">
                         Account
                     </Link>
-                    <Link href="/cart" className="hover:text-ink transition-colors relative" aria-label="Cart">
-                        Cart
-                        <span className="absolute -top-2 -right-3 text-[10px] bg-primary text-primary-ink rounded-full w-4 h-4 flex items-center justify-center">
-                            0
-                        </span>
-                    </Link>
+                    <Suspense fallback={<span className="relative">Cart<span className="absolute -top-2 -right-3 text-[10px] bg-primary text-primary-ink rounded-full w-4 h-4 flex items-center justify-center">0</span></span>}>
+                        <CartBadge />
+                    </Suspense>
                 </nav>
             </div>
 

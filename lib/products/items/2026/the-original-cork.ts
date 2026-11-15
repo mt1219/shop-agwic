@@ -88,7 +88,7 @@ Backed by our 30-day whistle-free guarantee. Terms apply. Whistlers may apply.`,
   ],
   termsRef: "section-4b",
   warnings: [
-    "WARNING: This is a parody store. The cork is not a weapon. Do not put it in anyone's mouth. If you are currently being whistled at, please contact a licensed professional. We are not licensed professionals.",
+    "WARNING: The cork is not a weapon. Do not put it in anyone's mouth. If you are currently being whistled at, please contact a licensed professional. We are not licensed professionals.",
   ],
   heroPath: "the-original-cork/hero.webp",
   galleryPaths: ["the-original-cork/1.webp", "the-original-cork/2.webp"],

@@ -1,9 +1,10 @@
 import Link from 'next/link'
 import { Suspense } from 'react'
 import { products } from '@/lib/products'
-import { categories, getCategory } from '@/lib/categories'
+import { getCategory } from '@/lib/categories'
 import { productImageUrl, formatPrice } from '@/lib/images'
 import type { Metadata } from 'next'
+import { SortSelectMobile } from '@/components/shop/SortSelectMobile'
 
 export const metadata: Metadata = {
     title: 'Shop All Products',
@@ -66,7 +67,15 @@ async function ShopContent({
 
     return (
         <>
-            <header className="mb-8">
+            <header className="mb-6">
+                {activeCategory && (
+                    <Link
+                        href="/shop"
+                        className="inline-block text-xs text-primary underline underline-offset-2 mb-2"
+                    >
+                        ← All Products
+                    </Link>
+                )}
                 <h1 className="font-display text-3xl md:text-4xl text-ink mb-1">
                     {heading}
                 </h1>
@@ -78,74 +87,56 @@ async function ShopContent({
             </header>
 
             <div className="flex flex-col lg:flex-row gap-8">
-                {/* Sidebar: categories + sort */}
-                <aside className="lg:w-56 shrink-0 space-y-6">
-                    <div>
-                        <h2 className="text-xs uppercase tracking-wide text-ink-muted mb-2">
-                            Departments
-                        </h2>
-                        <ul className="space-y-1">
-                            <li>
-                                <Link
-                                    href="/shop"
-                                    className={`block text-sm py-1 ${!activeCategory ? 'font-semibold text-ink' : 'text-ink-muted hover:text-ink'
-                                        }`}
-                                >
-                                    All Products
-                                </Link>
-                            </li>
-                            {categories.map((c) => (
-                                <li key={c.slug}>
+                {/* Desktop sidebar: sort links */}
+                <aside className="hidden lg:block lg:w-56 shrink-0">
+                    <h2 className="text-xs uppercase tracking-wide text-ink-muted mb-2">
+                        Sort
+                    </h2>
+                    <ul className="space-y-1">
+                        {[
+                            { value: 'default', label: 'Default' },
+                            { value: 'price-asc', label: 'Price: Low to High' },
+                            { value: 'price-desc', label: 'Price: High to Low' },
+                            { value: 'name', label: 'Name: A–Z' },
+                        ].map((opt) => {
+                            const qs = new URLSearchParams()
+                            if (activeCategory) qs.set('category', activeCategory.slug)
+                            if (params.q) qs.set('q', params.q)
+                            if (opt.value !== 'default') qs.set('sort', opt.value)
+                            const href = `/shop${qs.toString() ? `?${qs.toString()}` : ''}`
+                            return (
+                                <li key={opt.value}>
                                     <Link
-                                        href={`/shop?category=${c.slug}`}
-                                        className={`block text-sm py-1 ${activeCategory?.slug === c.slug
-                                                ? 'font-semibold text-ink'
-                                                : 'text-ink-muted hover:text-ink'
+                                        href={href}
+                                        className={`block text-sm py-1 ${sort === opt.value
+                                            ? 'font-semibold text-ink'
+                                            : 'text-ink-muted hover:text-ink'
                                             }`}
                                     >
-                                        {c.name}
+                                        {opt.label}
                                     </Link>
                                 </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    <div>
-                        <h2 className="text-xs uppercase tracking-wide text-ink-muted mb-2">
-                            Sort
-                        </h2>
-                        <ul className="space-y-1">
-                            {[
-                                { value: 'default', label: 'Default' },
-                                { value: 'price-asc', label: 'Price: Low to High' },
-                                { value: 'price-desc', label: 'Price: High to Low' },
-                                { value: 'name', label: 'Name: A–Z' },
-                            ].map((opt) => {
-                                const qs = new URLSearchParams()
-                                if (activeCategory) qs.set('category', activeCategory.slug)
-                                if (params.q) qs.set('q', params.q)
-                                if (opt.value !== 'default') qs.set('sort', opt.value)
-                                const href = `/shop${qs.toString() ? `?${qs.toString()}` : ''}`
-                                return (
-                                    <li key={opt.value}>
-                                        <Link
-                                            href={href}
-                                            className={`block text-sm py-1 ${sort === opt.value
-                                                    ? 'font-semibold text-ink'
-                                                    : 'text-ink-muted hover:text-ink'
-                                                }`}
-                                        >
-                                            {opt.label}
-                                        </Link>
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
+                            )
+                        })}
+                    </ul>
                 </aside>
 
-                {/* Grid */}
-                <div className="flex-1">
+                {/* Products — with mobile sort bar above */}
+                <div className="flex-1 min-w-0">
+                    <div className="lg:hidden mb-4">
+                        <label
+                            htmlFor="sort-mobile"
+                            className="text-xs uppercase tracking-wide text-ink-muted mb-1 block"
+                        >
+                            Sort
+                        </label>
+                        <SortSelectMobile
+                            activeCategory={activeCategory?.slug}
+                            query={params.q}
+                            current={sort}
+                        />
+                    </div>
+
                     {sorted.length === 0 ? (
                         <div className="border border-border bg-surface rounded p-10 text-center">
                             <p className="font-display text-xl text-ink mb-2">

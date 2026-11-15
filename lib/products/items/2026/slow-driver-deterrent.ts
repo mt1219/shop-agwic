@@ -79,7 +79,7 @@ Backed by our 30-day "they'll figure it out" guarantee. Terms apply. Slow driver
   ],
   termsRef: "section-4",
   warnings: [
-    "WARNING: This is a parody store. Do not apply this to any vehicle. Especially not a police vehicle. We are serious about that part.",
+    "WARNING: Do not apply this to any vehicle. Especially not a police vehicle. We are serious about that part.",
   ],
   heroPath: "slow-driver-deterrent/hero.webp",
   galleryPaths: ["slow-driver-deterrent/1.webp"],

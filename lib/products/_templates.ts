@@ -49,7 +49,7 @@ export const product = {
   ],
   termsRef: undefined,
   warnings: [
-    // 'This is a parody store. Do not use this product. We are serious.',
+    // ' Do not use this product. We are serious.',
   ],
   heroPath: "", // '<slug>/hero.webp'
   galleryPaths: [], // ['<slug>/1.webp', '<slug>/2.webp']
