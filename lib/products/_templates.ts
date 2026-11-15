@@ -10,6 +10,10 @@ import type { Product } from "./types";
  *    (hero.webp, 1.webp, 2.webp, ...) and insert rows into `product_images`.
  *    Or run `npm run new:product` (when built) to automate this.
  * 4. Add the product to `lib/products/index.ts`.
+ *  * 4b. OPTIONAL: add a custom buy message in lib/buy-messages.ts.
+ *     Under `buyMessages`, key by this product's slug:
+ *       'my-product-slug': (name) => `Thank you for ${name}. It will not arrive.`,
+ *     If you skip this, the fallback message is used.
  * 5. Push. Vercel deploys. Done.
  *
  * THE VOICE:

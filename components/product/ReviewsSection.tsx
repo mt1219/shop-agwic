@@ -1,4 +1,5 @@
 import type { Product } from '@/lib/products/types'
+import { ReviewForm } from './ReviewForm'
 
 export function ReviewsSection({ product }: { product: Product }) {
     // Seed reviews from the product file (until Supabase is connected)
@@ -47,6 +48,10 @@ export function ReviewsSection({ product }: { product: Product }) {
                 </div>
 
                 <div>
+
+                    <div className="mt-5 mb-5">
+                        <ReviewForm productSlug={product.slug} />
+                    </div>
                     <h3 className="text-sm font-semibold text-ink mb-3">
                         Reviews from the United States
                     </h3>
@@ -82,23 +87,6 @@ export function ReviewsSection({ product }: { product: Product }) {
                                 )}
                             </article>
                         ))}
-                    </div>
-
-                    <div className="mt-8 p-4 border border-border bg-stripe rounded">
-                        <p className="text-sm font-semibold text-ink mb-1">
-                            Write a review
-                        </p>
-                        <p className="text-xs text-ink-muted mb-2">
-                            Your review will be submitted to the Content Review Team (CRT).
-                            The CRT reviews submissions within 2–3 business days. You will not
-                            be notified when your review is approved.
-                        </p>
-                        <button
-                            disabled
-                            className="mt-2 px-4 h-8 bg-surface border border-border rounded text-xs text-ink-muted cursor-not-allowed"
-                        >
-                            Write a review (coming soon)
-                        </button>
                     </div>
                 </div>
             </div>
