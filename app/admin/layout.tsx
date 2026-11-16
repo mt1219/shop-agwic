@@ -34,19 +34,33 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                         </Link>
                     ))}
                 </nav>
-
+                <form action="/admin/logout" method="POST">
+                    <button
+                        type="submit"
+                        className="w-full text-left px-4 py-2 text-sm text-ink-muted hover:text-ink hover:bg-stripe transition-colors"
+                    >
+                        Sign Out
+                    </button>
+                </form>
                 <div className="px-4 py-3 border-t border-border fine-print">
                     The Content Review Team is very tired.
                 </div>
             </aside>
 
             <div className="flex-1 flex flex-col">
-                <header className="h-14 border-b border-border bg-surface flex items-center px-6">
+                <header className="h-14 border-b border-border bg-surface flex items-center justify-between px-6">
                     <p className="text-sm text-ink-muted">
                         AGWIC Internal — Authorized Personnel Only
                     </p>
+                    <form action="/admin/logout" method="POST">
+                        <button
+                            type="submit"
+                            className="text-sm text-ink-muted hover:text-ink transition-colors"
+                        >
+                            Sign Out
+                        </button>
+                    </form>
                 </header>
-
                 <div className="flex-1 p-6 lg:p-10">{children}</div>
             </div>
         </div>

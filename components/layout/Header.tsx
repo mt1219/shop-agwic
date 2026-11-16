@@ -27,11 +27,11 @@ export function Header() {
                     </Suspense>
                 </div>
 
-                <nav className="hidden md:flex items-center gap-4 text-sm text-ink-muted">
-                    <Link href="/shop" className="hover:text-ink transition-colors">
+                <nav className="flex items-center gap-4 text-sm text-ink-muted">
+                    <Link href="/shop" className="hidden md:inline hover:text-ink transition-colors">
                         All Products
                     </Link>
-                    <Link href="/account" className="hover:text-ink transition-colors" aria-label="Account">
+                    <Link href="/account" className="hidden md:inline hover:text-ink transition-colors" aria-label="Account">
                         Account
                     </Link>
                     <Suspense fallback={<span className="relative">Cart<span className="absolute -top-2 -right-3 text-[10px] bg-primary text-primary-ink rounded-full w-4 h-4 flex items-center justify-center">0</span></span>}>
