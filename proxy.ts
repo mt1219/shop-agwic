@@ -4,7 +4,13 @@ import { createServerClient } from "@supabase/ssr";
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // 1. Only guard /admin routes
   if (!pathname.startsWith("/admin")) {
+    return NextResponse.next();
+  }
+
+  // 2. CRITICAL: Let the login page through, or it loops forever
+  if (pathname === "/admin/login") {
     return NextResponse.next();
   }
 
