@@ -8,7 +8,7 @@
  * Requires .env.local with NEXT_PUBLIC_SUPABASE_URL and
  * SUPABASE_SERVICE_ROLE_KEY.
  */
-
+import "./env";
 import { createClient } from "@supabase/supabase-js";
 import { products } from "../lib/products";
 
