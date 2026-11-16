@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { createClient } from '@supabase/supabase-js'
+import { connection } from 'next/server'
 
 export const metadata: Metadata = {
     title: 'AGWIC Analytics',
@@ -111,6 +112,7 @@ function StatCard({ stat }: { stat: Stat }) {
 }
 
 export default async function AnalyticsPage() {
+    await connection()
     const data = await getDashboardData()
 
     if (!data.configured) {
