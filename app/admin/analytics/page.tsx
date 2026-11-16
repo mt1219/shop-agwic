@@ -1,6 +1,7 @@
+import { Suspense } from 'react'
+import { connection } from 'next/server'
 import type { Metadata } from 'next'
 import { createClient } from '@supabase/supabase-js'
-import { connection } from 'next/server'
 
 export const metadata: Metadata = {
     title: 'AGWIC Analytics',
@@ -111,27 +112,59 @@ function StatCard({ stat }: { stat: Stat }) {
     )
 }
 
-export default async function AnalyticsPage() {
+function AnalyticsSkeleton() {
+    return (
+        <div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="border border-border bg-surface rounded p-5">
+                        <div className="h-3 bg-stripe rounded w-2/3 mb-2" />
+                        <div className="h-8 bg-stripe rounded w-1/2" />
+                    </div>
+                ))}
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                {[1, 2].map((i) => (
+                    <div key={i} className="border border-border bg-surface rounded p-5 h-48" />
+                ))}
+            </div>
+            <div className="border border-border bg-surface rounded p-5 h-64" />
+        </div>
+    )
+}
+
+// Page shell: synchronous, prerenderable
+export default function AnalyticsPage() {
+    return (
+        <div className="max-w-5xl">
+            <h1 className="font-display text-3xl text-ink mb-1">Analytics</h1>
+            <p className="text-sm text-ink-muted mb-8">
+                Last 7 days. All numbers are approximations of the truth.
+            </p>
+
+            <Suspense fallback={<AnalyticsSkeleton />}>
+                <AnalyticsContent />
+            </Suspense>
+        </div>
+    )
+}
+
+// Dynamic child: awaits connection(), then fetches
+async function AnalyticsContent() {
     await connection()
     const data = await getDashboardData()
 
     if (!data.configured) {
         return (
-            <div className="max-w-5xl">
-                <h1 className="font-display text-3xl text-ink mb-1">Analytics</h1>
-                <p className="text-sm text-ink-muted mb-8">
-                    Pre-launch. No data yet. No bandwidth yet.
+            <div className="border border-border bg-surface rounded p-8">
+                <p className="text-sm text-ink">
+                    Supabase is not configured. Once connected, page views, clicks, and
+                    product activity will appear here.
                 </p>
-                <div className="border border-border bg-surface rounded p-8">
-                    <p className="text-sm text-ink">
-                        Supabase is not configured. Once connected, page views, clicks, and
-                        product activity will appear here.
-                    </p>
-                    <p className="fine-print mt-4">
-                        The Content Review Team is aware. The Content Review Team is
-                        looking into it. The Content Review Team is not looking into it.
-                    </p>
-                </div>
+                <p className="fine-print mt-4">
+                    The Content Review Team is aware. The Content Review Team is looking
+                    into it. The Content Review Team is not looking into it.
+                </p>
             </div>
         )
     }
@@ -150,12 +183,7 @@ export default async function AnalyticsPage() {
     ]
 
     return (
-        <div className="max-w-5xl">
-            <h1 className="font-display text-3xl text-ink mb-1">Analytics</h1>
-            <p className="text-sm text-ink-muted mb-8">
-                Last 7 days. All numbers are approximations of the truth.
-            </p>
-
+        <>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 {stats.map((s) => (
                     <StatCard key={s.label} stat={s} />
@@ -258,6 +286,6 @@ export default async function AnalyticsPage() {
                     </div>
                 )}
             </section>
-        </div>
+        </>
     )
 }
