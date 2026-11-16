@@ -28,11 +28,34 @@ export const metadata: Metadata = {
     template: `%s — ${SITE_NAME}`,
   },
   description:
-    'American Global Worldwide International Commerce. A global conglomerate selling things that should not be sold. Parody storefront.',
+    'American Global Worldwide International Commerce is an online retailer offering a wide selection of products, solutions, and everyday essentials for modern consumers.',
+
+  keywords: [
+    "mike turko",
+    "elayne dell",
+
+  ],
   openGraph: {
     siteName: SITE_NAME,
     type: 'website',
     locale: 'en_US',
+  },
+
+  icons: {
+    icon: [
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
+    other: [{ rel: "manifest", url: "/site.webmanifest" }],
+  },
+  manifest: "/site.webmanifest",
+  appleWebApp: {
+    title: "ShopAGWIC",
+  },
+  alternates: {
+    canonical: "https://shopagwic.com",
   },
 }
 
