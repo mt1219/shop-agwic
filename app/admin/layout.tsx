@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 const nav = [
     { href: '/admin', label: 'Home' },
     { href: '/admin/analytics', label: 'Analytics' },
-    { href: '/admin/reviews', label: 'Content Review Queue', badge: 'soon' },
+    { href: '/admin/reviews', label: 'Content Review Queue' },
     { href: '/admin/emails', label: 'Email Composer', badge: 'soon' },
     { href: '/admin/signups', label: 'Signups', badge: 'soon' },
 ]

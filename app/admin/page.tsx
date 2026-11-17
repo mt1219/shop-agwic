@@ -25,14 +25,17 @@ export default function AdminHomePage() {
                     </p>
                 </Link>
 
-                <div className="block p-6 border border-border bg-stripe rounded opacity-60 cursor-not-allowed">
+                <Link
+                    href="/admin/reviews"
+                    className="block p-6 border border-border bg-surface rounded hover:border-ink transition-colors"
+                >
                     <h2 className="font-display text-xl text-ink mb-1">
                         Content Review Queue
                     </h2>
                     <p className="text-sm text-ink-muted">
-                        Pending submissions. Coming soon. The CRT is preparing.
+                        Pending submissions. The CRT is reviewing. The CRT is always reviewing.
                     </p>
-                </div>
+                </Link>
 
                 <div className="block p-6 border border-border bg-stripe rounded opacity-60 cursor-not-allowed">
                     <h2 className="font-display text-xl text-ink mb-1">Email Composer</h2>
