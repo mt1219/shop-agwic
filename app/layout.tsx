@@ -18,7 +18,7 @@ const fraunces = Fraunces({
   axes: ['SOFT', 'WONK', 'opsz'],
 })
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://shopagwic.com'
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.shopagwic.com'
 const SITE_NAME = 'AGWIC'
 
 export const metadata: Metadata = {
@@ -28,13 +28,8 @@ export const metadata: Metadata = {
     template: `%s — ${SITE_NAME}`,
   },
   description:
-    'American Global Worldwide International Commerce is an online retailer offering a wide selection of products, solutions, and everyday essentials for modern consumers.',
+    'American Global Worldwide International Commerce is an online retailer offering a wide selection of products, solutions, and everyday essentials for irreverent consumers.',
 
-  keywords: [
-    "mike turko",
-    "elayne dell",
-
-  ],
   openGraph: {
     siteName: SITE_NAME,
     type: 'website',
@@ -43,22 +38,21 @@ export const metadata: Metadata = {
 
   icons: {
     icon: [
-      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico" },
+      { url: '/favicon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico' },
     ],
-    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
-    other: [{ rel: "manifest", url: "/site.webmanifest" }],
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180' }],
   },
-  manifest: "/site.webmanifest",
+  manifest: '/manifest.webmanifest',
   appleWebApp: {
-    title: "ShopAGWIC",
+    title: 'ShopAGWIC',
   },
   alternates: {
-    canonical: "https://shopagwic.com",
+    canonical: 'https://www.shopagwic.com',
   },
   verification: {
-    google: 'paste-the-code-from-search-console-here',
+    google: '_SH0dDUQdOEp4BrLYYr93bhsMdfxgk6z3mSUteY1Dqw',
   },
 }
 
