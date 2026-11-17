@@ -4,6 +4,7 @@ import '@/styles/global.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { RouteTracker } from '@/components/RouteTracker'
+import { SupportButton } from '@/components/support/SupportButton'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -71,6 +72,7 @@ export default function RootLayout({
         <RouteTracker />
         <Header />
         <main className="flex-1">{children}</main>
+        <SupportButton />
         <Footer />
       </body>
     </html>
