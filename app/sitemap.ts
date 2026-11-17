@@ -2,12 +2,12 @@ import type { MetadataRoute } from "next";
 import { products } from "@/lib/products";
 import { categories } from "@/lib/categories";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://shopagwic.com";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.shopagwic.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date().toISOString();
 
-  // Static pages
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: SITE_URL,
@@ -77,7 +77,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Category pages
   const categoryPages: MetadataRoute.Sitemap = categories.map((c) => ({
     url: `${SITE_URL}/shop?category=${c.slug}`,
     lastModified: now,
@@ -85,7 +84,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // Product pages — one per product in the registry
   const productPages: MetadataRoute.Sitemap = products.map((p) => ({
     url: `${SITE_URL}/product/${p.slug}`,
     lastModified: now,
