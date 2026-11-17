@@ -202,8 +202,8 @@ async function QueueContent({
                     </p>
                     <p className="text-sm text-ink-muted">
                         {product
-                            ? 'The Content Review Team has nothing to review for this product.'
-                            : 'The Content Review Team has nothing to review. The Content Review Team is reviewing anyway. The Content Review Team is very tired.'}
+                            ? 'No reviews for this product. The Content Review Team has forwarded your request to the Customer Success Specialist.'
+                            : 'The queue is empty. The Content Review Team has forwarded your request to the Customer Success Specialist. The Customer Success Specialist has forwarded your request back to the Content Review Team.'}
                     </p>
                 </div>
             )}

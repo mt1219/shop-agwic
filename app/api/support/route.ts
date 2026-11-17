@@ -47,7 +47,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json(
         {
           error:
-            "The Content Review Team is reviewing your request. The Content Review Team is very tired.",
+            "The Content Review Team is reviewing your request. The Content Review Team is updating. Do not close the Content Review Team",
         },
         { status: 502 },
       );

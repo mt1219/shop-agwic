@@ -134,8 +134,7 @@ export function ReviewForm({ productSlug }: { productSlug: string }) {
             </button>
 
             <p className="fine-print">
-                Reviews are reviewed by the Content Review Team. The Content Review
-                Team consists of one (1) person. The Content Review Team is very tired.
+                The Content Review Team has forwarded your review to the Customer Success Specialist
             </p>
         </form>
     )

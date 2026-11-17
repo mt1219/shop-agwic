@@ -25,7 +25,7 @@ export const product = {
     },
     {
       marker: "†",
-      text: "Our team has selected every brick by hand. They are very tired.",
+      text: "Our team has selected every brick by hand.",
     },
     {
       marker: "‡",

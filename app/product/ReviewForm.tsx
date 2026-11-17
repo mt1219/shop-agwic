@@ -135,7 +135,7 @@ export function ReviewForm({ productSlug }: { productSlug: string }) {
 
             <p className="fine-print">
                 Reviews are reviewed by the Content Review Team. The Content Review
-                Team consists of one (1) person. The Content Review Team is very tired.
+                Team consists of one (1) person.
             </p>
         </form>
     )

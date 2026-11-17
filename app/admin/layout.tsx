@@ -43,7 +43,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
                     </button>
                 </form>
                 <div className="px-4 py-3 border-t border-border fine-print">
-                    The Content Review Team is very tired.
+                    The Content Review Team is in a huddle.
                 </div>
             </aside>
 
