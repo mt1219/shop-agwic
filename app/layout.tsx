@@ -57,6 +57,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://shopagwic.com",
   },
+  verification: {
+    google: 'paste-the-code-from-search-console-here',
+  },
 }
 
 export default function RootLayout({
