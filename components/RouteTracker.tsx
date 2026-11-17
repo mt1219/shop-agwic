@@ -12,6 +12,7 @@ export function RouteTracker() {
     const pathname = usePathname()
 
     useEffect(() => {
+        if (pathname.startsWith('/admin')) return
         trackClick('page-view', {
             page: pathname,
             referrer: typeof document !== 'undefined' ? document.referrer || 'direct' : 'direct',

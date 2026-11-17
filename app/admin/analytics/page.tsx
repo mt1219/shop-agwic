@@ -1,5 +1,6 @@
 import { Suspense } from 'react'
 import { connection } from 'next/server'
+import Link from 'next/link'
 import type { Metadata } from 'next'
 import { createClient } from '@supabase/supabase-js'
 
@@ -19,7 +20,16 @@ type RecentEvent = {
     created_at: string
 }
 
-async function getDashboardData() {
+type DashboardData = Awaited<ReturnType<typeof getDashboardData>>
+
+const RANGES = [
+    { value: '1', label: '1 day' },
+    { value: '7', label: '7 days' },
+    { value: '30', label: '30 days' },
+    { value: '90', label: '90 days' },
+]
+
+async function getDashboardData(days: number) {
     const url = process.env.NEXT_PUBLIC_SUPABASE_URL
     const key = process.env.SUPABASE_SERVICE_ROLE_KEY
 
@@ -31,28 +41,28 @@ async function getDashboardData() {
         auth: { persistSession: false, autoRefreshToken: false },
     })
 
-    const since7d = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
+    const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString()
 
-    const [pv7d, sessions7d, topPages, topProducts, recent] = await Promise.all([
+    const [pv, sessions, topPages, topProducts, recent] = await Promise.all([
         supabase
             .from('events')
             .select('*', { count: 'exact', head: true })
             .eq('event_name', 'page-view')
-            .gte('created_at', since7d),
+            .gte('created_at', since),
         supabase
             .from('events')
             .select('session_id')
-            .gte('created_at', since7d)
+            .gte('created_at', since)
             .not('session_id', 'is', null),
         supabase
             .from('events')
             .select('page')
             .eq('event_name', 'page-view')
-            .gte('created_at', since7d),
+            .gte('created_at', since),
         supabase
             .from('events')
             .select('product_slug, event_name')
-            .gte('created_at', since7d)
+            .gte('created_at', since)
             .not('product_slug', 'is', null),
         supabase
             .from('events')
@@ -62,7 +72,7 @@ async function getDashboardData() {
     ])
 
     const uniqueSessions = new Set(
-        (sessions7d.data ?? []).map((r) => r.session_id).filter(Boolean),
+        (sessions.data ?? []).map((r) => r.session_id).filter(Boolean),
     ).size
 
     const pageCounts = new Map<string, number>()
@@ -91,8 +101,8 @@ async function getDashboardData() {
     return {
         configured: true as const,
         stats: {
-            pv7d: pv7d.count ?? 0,
-            sessions7d: uniqueSessions,
+            pv: pv.count ?? 0,
+            sessions: uniqueSessions,
         },
         topPages: topPagesSorted,
         topProducts: topProductsSorted,
@@ -108,6 +118,25 @@ function StatCard({ stat }: { stat: Stat }) {
             </p>
             <p className="font-display text-3xl text-ink break-all">{stat.value}</p>
             {stat.hint && <p className="fine-print mt-1">{stat.hint}</p>}
+        </div>
+    )
+}
+
+function RangeFilter({ current }: { current: string }) {
+    return (
+        <div className="flex gap-1.5 mb-6">
+            {RANGES.map((r) => (
+                <Link
+                    key={r.value}
+                    href={`/admin/analytics?days=${r.value}`}
+                    className={`h-8 px-3 text-xs rounded border flex items-center transition-colors ${current === r.value
+                            ? 'bg-primary text-primary-ink border-primary font-semibold'
+                            : 'bg-surface text-ink-muted border-border hover:border-ink-muted'
+                        }`}
+                >
+                    {r.label}
+                </Link>
+            ))}
         </div>
     )
 }
@@ -133,26 +162,36 @@ function AnalyticsSkeleton() {
     )
 }
 
-// Page shell: synchronous, prerenderable
-export default function AnalyticsPage() {
+export default function AnalyticsPage({
+    searchParams,
+}: {
+    searchParams: Promise<{ days?: string }>
+}) {
     return (
         <div className="max-w-5xl">
             <h1 className="font-display text-3xl text-ink mb-1">Analytics</h1>
-            <p className="text-sm text-ink-muted mb-8">
-                Last 7 days. All numbers are approximations of the truth.
+            <p className="text-sm text-ink-muted mb-6">
+                All numbers are approximations of the truth.
             </p>
 
             <Suspense fallback={<AnalyticsSkeleton />}>
-                <AnalyticsContent />
+                <AnalyticsContent searchParams={searchParams} />
             </Suspense>
         </div>
     )
 }
 
-// Dynamic child: awaits connection(), then fetches
-async function AnalyticsContent() {
+async function AnalyticsContent({
+    searchParams,
+}: {
+    searchParams: Promise<{ days?: string }>
+}) {
     await connection()
-    const data = await getDashboardData()
+    const { days: daysParam } = await searchParams
+    const days = Math.max(1, Math.min(365, Number(daysParam) || 7))
+    const current = String(days)
+
+    const data = await getDashboardData(days)
 
     if (!data.configured) {
         return (
@@ -170,11 +209,11 @@ async function AnalyticsContent() {
     }
 
     const stats: Stat[] = [
-        { label: 'Page views (7d)', value: data.stats.pv7d.toLocaleString() },
-        { label: 'Unique sessions (7d)', value: data.stats.sessions7d.toLocaleString() },
-        { label: 'Top page (7d)', value: data.topPages[0]?.[0] ?? '—' },
+        { label: `Page views (${days}d)`, value: data.stats.pv.toLocaleString() },
+        { label: `Unique sessions (${days}d)`, value: data.stats.sessions.toLocaleString() },
+        { label: `Top page (${days}d)`, value: data.topPages[0]?.[0] ?? '—' },
         {
-            label: 'Top product (7d)',
+            label: `Top product (${days}d)`,
             value: data.topProducts[0]?.[0] ?? '—',
             hint: data.topProducts[0]
                 ? `${data.topProducts[0][1].views} views`
@@ -184,6 +223,8 @@ async function AnalyticsContent() {
 
     return (
         <>
+            <RangeFilter current={current} />
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
                 {stats.map((s) => (
                     <StatCard key={s.label} stat={s} />
@@ -192,10 +233,12 @@ async function AnalyticsContent() {
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
                 <section className="border border-border bg-surface rounded p-5">
-                    <h2 className="font-display text-xl text-ink mb-3">Top Pages (7d)</h2>
+                    <h2 className="font-display text-xl text-ink mb-3">
+                        Top Pages ({days}d)
+                    </h2>
                     {data.topPages.length === 0 ? (
                         <p className="text-sm text-ink-muted">
-                            No page views yet. The Content Review Team is aware.
+                            No page views in this range. The Content Review Team is aware.
                         </p>
                     ) : (
                         <table className="w-full text-sm">
@@ -218,10 +261,13 @@ async function AnalyticsContent() {
                 </section>
 
                 <section className="border border-border bg-surface rounded p-5">
-                    <h2 className="font-display text-xl text-ink mb-3">Top Products (7d)</h2>
+                    <h2 className="font-display text-xl text-ink mb-3">
+                        Top Products ({days}d)
+                    </h2>
                     {data.topProducts.length === 0 ? (
                         <p className="text-sm text-ink-muted">
-                            No product activity yet. The Content Review Team is preparing.
+                            No product activity in this range. The Content Review Team is
+                            preparing.
                         </p>
                     ) : (
                         <table className="w-full text-sm">
