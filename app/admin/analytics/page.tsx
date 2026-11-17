@@ -130,8 +130,8 @@ function RangeFilter({ current }: { current: string }) {
                     key={r.value}
                     href={`/admin/analytics?days=${r.value}`}
                     className={`h-8 px-3 text-xs rounded border flex items-center transition-colors ${current === r.value
-                            ? 'bg-primary text-primary-ink border-primary font-semibold'
-                            : 'bg-surface text-ink-muted border-border hover:border-ink-muted'
+                        ? 'bg-primary text-primary-ink border-primary font-semibold'
+                        : 'bg-surface text-ink-muted border-border hover:border-ink-muted'
                         }`}
                 >
                     {r.label}
@@ -295,7 +295,8 @@ async function AnalyticsContent({
             </div>
 
             <section className="border border-border bg-surface rounded p-5">
-                <h2 className="font-display text-xl text-ink mb-3">Recent Events</h2>
+                <h2 className="font-display text-xl text-ink mb-0">Recent Events</h2>
+                <p className="fine-print mb-3">Last 30 events, all time</p>
                 {data.recent.length === 0 ? (
                     <p className="text-sm text-ink-muted">
                         No events yet. Events will appear here once someone visits the site
