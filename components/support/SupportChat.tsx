@@ -59,7 +59,7 @@ export function SupportChat({ onCloseAction }: { onCloseAction: () => void }) {
 
     return (
         <div
-            className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-50 w-full sm:w-[400px] h-dvh sm:h-[600px] flex flex-col bg-surface border border-border rounded-t-lg sm:rounded-lg shadow-2xl"
+            className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-50 w-full max-w-full sm:w-[400px] h-dvh sm:h-[600px] bg-surface border border-border rounded-t-lg sm:rounded-lg shadow-2xl flex flex-col"
             role="dialog"
             aria-label="AGWIC Support Chat"
         >
@@ -123,7 +123,7 @@ export function SupportChat({ onCloseAction }: { onCloseAction: () => void }) {
             {/* Input */}
             <form
                 onSubmit={onSubmit}
-                className="border-t border-border p-3 flex gap-2 shrink-0 pb-[env(safe-area-inset-bottom)]"
+                className="border-t border-border p-3 flex gap-2 shrink-0 min-w-0"
             >
                 <input
                     type="text"
@@ -137,12 +137,11 @@ export function SupportChat({ onCloseAction }: { onCloseAction: () => void }) {
                 <button
                     type="submit"
                     disabled={sending || !input.trim()}
-                    className="h-9 px-4 bg-primary text-primary-ink rounded text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-60"
+                    className="h-9 px-4 bg-primary text-primary-ink rounded text-sm font-semibold hover:opacity-90 transition-opacity disabled:opacity-60 shrink-0"
                 >
                     Send
                 </button>
             </form>
-
             <p className="px-4 py-2 text-[10px] text-ink-muted text-center border-t border-border shrink-0">
                 The Support Team love huddles.
             </p>
