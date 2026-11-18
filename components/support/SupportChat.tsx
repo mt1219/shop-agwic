@@ -59,7 +59,7 @@ export function SupportChat({ onCloseAction }: { onCloseAction: () => void }) {
 
     return (
         <div
-            className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-50 w-full sm:w-[400px] h-[80vh] sm:h-[600px] bg-surface border border-border rounded-t-lg sm:rounded-lg shadow-2xl flex flex-col"
+            className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-50 w-full sm:w-[400px] h-dvh sm:h-[600px] flex flex-col bg-surface border border-border rounded-t-lg sm:rounded-lg shadow-2xl"
             role="dialog"
             aria-label="AGWIC Support Chat"
         >
@@ -95,7 +95,7 @@ export function SupportChat({ onCloseAction }: { onCloseAction: () => void }) {
             </header>
 
             {/* Messages */}
-            <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-3 space-y-3">
+            <div ref={scrollRef} className="flex-1 min-h-0 overflow-y-auto px-4 py-3 space-y-3">
                 {messages.map((m, i) => (
                     <div
                         key={i}
@@ -123,7 +123,7 @@ export function SupportChat({ onCloseAction }: { onCloseAction: () => void }) {
             {/* Input */}
             <form
                 onSubmit={onSubmit}
-                className="border-t border-border p-3 flex gap-2 shrink-0"
+                className="border-t border-border p-3 flex gap-2 shrink-0 pb-[env(safe-area-inset-bottom)]"
             >
                 <input
                     type="text"
