@@ -98,7 +98,7 @@ export function ReviewForm({ productSlug }: { productSlug: string }) {
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     maxLength={120}
-                    className="w-full min-w-0 block px-3 h-9 text-sm border border-border rounded bg-surface focus:outline-none focus:border-ink"
+                    className="w-full min-w-0 block px-3 h-9 text-base sm:text-sm border border-border rounded bg-surface focus:outline-none focus:border-ink"
                     placeholder="Summarize your experience"
                 />
             </div>
@@ -115,7 +115,7 @@ export function ReviewForm({ productSlug }: { productSlug: string }) {
                     required
                     maxLength={2000}
                     rows={4}
-                    className="w-full min-w-0 block px-3 py-2 text-sm border border-border rounded bg-surface focus:outline-none focus:border-ink resize-y"
+                    className="w-full min-w-0 block px-3 py-2 text-base sm:text-sm border border-border rounded bg-surface focus:outline-none focus:border-ink resize-y"
                     placeholder="Tell us about your experience with this product."
                 />
                 <p className="fine-print mt-1">{body.length} / 2000</p>

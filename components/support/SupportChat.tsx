@@ -131,8 +131,7 @@ export function SupportChat({ onCloseAction }: { onCloseAction: () => void }) {
                     onChange={(e) => setInput(e.target.value)}
                     placeholder="Ask a question..."
                     disabled={sending}
-                    className="flex-1 min-w-0 block px-3 h-9 text-sm border border-border rounded bg-surface focus:outline-none focus:border-ink disabled:opacity-60"
-                    autoFocus
+                    className="flex-1 min-w-0 block px-3 h-9 text-base sm:text-sm border border-border rounded bg-surface focus:outline-none focus:border-ink disabled:opacity-60"
                 />
                 <button
                     type="submit"

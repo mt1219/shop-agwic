@@ -17,7 +17,7 @@ export function PasswordField() {
                     type={show ? 'text' : 'password'}
                     required
                     autoComplete="current-password"
-                    className="w-full min-w-0 block px-3 pr-16 h-9 text-sm border border-border rounded bg-surface focus:outline-none focus:border-ink"
+                    className="w-full min-w-0 block px-3 pr-16 h-9 text-base sm:text-sm border border-border rounded bg-surface focus:outline-none focus:border-ink"
                 />
                 <button
                     type="button"
