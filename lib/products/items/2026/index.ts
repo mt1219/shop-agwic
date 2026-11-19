@@ -8,6 +8,7 @@ import { product as watchedSubscription } from "./watched-subscription";
 import { product as permissionToLeaveTheParty } from "./permission-to-leave-the-party";
 import { product as placeholderHealth } from "./placeholder-health";
 import { product as placeholderToys } from "./placeholder-toys";
+import { product as theWhistlerEnhancer } from "./the-whistler-enhancer";
 
 export const items = [
   theOriginalCork,
@@ -20,4 +21,5 @@ export const items = [
   permissionToLeaveTheParty,
   placeholderHealth,
   placeholderToys,
+  theWhistlerEnhancer,
 ];

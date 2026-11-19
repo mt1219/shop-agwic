@@ -57,7 +57,7 @@ async function main() {
       is_seed: true,
       verified_purchase: r.verifiedPurchase ?? false,
       helpful_count: r.helpfulCount ?? 0,
-      published: true,
+      status: "APPROVED",
       created_at: new Date(r.createdAt).toISOString(),
     }));
 

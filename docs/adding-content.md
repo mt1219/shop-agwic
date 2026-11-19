@@ -107,13 +107,13 @@ export const items = [
 
 ### Step 6: Add a buy message (optional, recommended)
 
-**File:** `lib/buy-messages.ts`
+**File:** `lib/buy-messages/products/2026.ts`
 
-In the `buyMessages` object, add an entry:
+Add one entry to the `buyMessages2026` object, add an entry. The top-level `lib/buy-messages/index.ts` merges all year files automatically. No changes to `index.ts` needed when adding a product.
 
 ```ts
-'the-whistler-enhancer': (name) =>
-  `Your ${name} is on its way. Your neighbor can already hear it.`,
+  "the-whistler-enhancer": (name) =>
+    `Your ${name} is on its way. Your neighbor can already hear it. Your neighbor has been notified.`,
 ```
 
 If skipped, the fallback message is used ("Thank you for your purchase of..."). The per-product message is funnier.
