@@ -119,7 +119,6 @@ The glass packs do not filter out bad toxins in the air. The glass packs do not 
     "glass-pack-leaf-blower/1.webp",
     "glass-pack-leaf-blower/2.webp",
     "glass-pack-leaf-blower/3.webp",
-    "glass-pack-leaf-blower/4.webp",
   ],
   stockLabel: "Only 3 left in stock",
   shipsIn: "Ships within 24 hours",
