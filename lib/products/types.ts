@@ -70,4 +70,6 @@ export type Product = {
   compareWith?: CompareRow[];
   /** Seeded reviews — the essay, in review costume. 4–6 per product. */
   seedReviews: SeedReview[];
+  /** Optional custom message for the /bought page. Receives the product name. */
+  buyMessage?: (name: string) => string;
 };

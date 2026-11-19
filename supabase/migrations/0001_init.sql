@@ -93,36 +93,35 @@ create policy "reviews public insert"
 -- RPC: bump_stat
 -- Called from server actions to increment add-to-cart / purchase counters.
 -- ----------------------------------------------------------------------------
-create or replace function bump_stat(slug text, kind text)
+create or replace function recompute_review_stats(slug text)
 returns void
 language plpgsql
 security definer
 as $$
 begin
-  if kind not in ('add', 'purchase') then
-    raise exception 'bump_stat: kind must be add or purchase, got %', kind;
-  end if;
-
   insert into product_stats (product_slug) values (slug)
     on conflict (product_slug) do nothing;
 
-  if kind = 'add' then
-    update product_stats
-       set add_to_cart_count = add_to_cart_count + 1,
-           last_added_at     = now(),
-           updated_at        = now()
-     where product_slug = slug;
-  else
-    update product_stats
-       set purchase_count     = purchase_count + 1,
-           last_purchased_at  = now(),
-           updated_at         = now()
-     where product_slug = slug;
-  end if;
+  update product_stats
+     set avg_rating   = (
+           select round(avg(rating)::numeric, 2)
+             from reviews
+            where product_slug = slug
+              and rating is not null
+              and status = 'APPROVED'
+         ),
+         review_count = (
+           select count(*)
+             from reviews
+            where product_slug = slug
+              and status = 'APPROVED'
+         ),
+         updated_at   = now()
+   where product_slug = slug;
 end;
 $$;
 
-grant execute on function bump_stat(text, text) to anon, authenticated;
+grant execute on function recompute_review_stats(text) to anon, authenticated;
 
 -- ----------------------------------------------------------------------------
 -- RPC: recompute_review_stats

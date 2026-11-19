@@ -23,4 +23,6 @@ export const buyMessages2026: Record<string, BuyMessage> = {
     `${name} is on its way. We do not know what it does. Neither will you.`,
   "placeholder-toys": (name) =>
     `${name} has been packed. It is not for children. It is not for anyone.`,
+  "glass-pack-leaf-blower": (name) =>
+    `Your ${name} is on its way. Your neighbors can already hear it. Your neighbors can already smell it. Your neighbors have been notified.`,
 };

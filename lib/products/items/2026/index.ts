@@ -9,6 +9,7 @@ import { product as permissionToLeaveTheParty } from "./permission-to-leave-the-
 import { product as placeholderHealth } from "./placeholder-health";
 import { product as placeholderToys } from "./placeholder-toys";
 import { product as theWhistlerEnhancer } from "./the-whistler-enhancer";
+import { product as glassPackLeafBlower } from "./glass-pack-leaf-blower";
 
 export const items = [
   theOriginalCork,
@@ -22,4 +23,5 @@ export const items = [
   placeholderHealth,
   placeholderToys,
   theWhistlerEnhancer,
+  glassPackLeafBlower,
 ];
