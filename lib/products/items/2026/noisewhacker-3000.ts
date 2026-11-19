@@ -2,6 +2,7 @@ import type { Product } from "@/lib/products/types";
 
 export const product = {
   slug: "noisewhacker-3000",
+  createdAt: "2025-11-10",
   name: "NoiseWhacker™ 3000",
   brand: "HOA Solutions Inc.",
   priceCents: 3499,

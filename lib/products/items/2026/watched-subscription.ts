@@ -2,6 +2,7 @@ import type { Product } from "@/lib/products/types";
 
 export const product = {
   slug: "watched-subscription",
+  createdAt: "2025-11-5",
   name: "The Feeling of Being Watched (Subscription)",
   brand: "AGWIC Security",
   priceCents: 499,

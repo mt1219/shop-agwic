@@ -2,6 +2,7 @@ import type { Product } from "@/lib/products/types";
 
 export const product = {
   slug: "permission-to-leave-the-party",
+  createdAt: "2025-11-9",
   name: "Permission to Leave the Party (PDF)",
   brand: "AGWIC Social",
   priceCents: 299,

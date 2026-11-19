@@ -3,6 +3,7 @@ import type { Product } from "@/lib/products/types";
 export const product = {
   slug: "the-whistler-enhancer",
   name: "The Whistler Enhancer™",
+  createdAt: "2026-11-19",
   brand: "WhistleWorks Inc.",
   priceCents: 3999,
   compareAtCents: 5999,
@@ -78,7 +79,7 @@ Backed by our 30-day "they heard you" guarantee. Terms apply. Everyone applies.`
     {
       question: "Is it legal?",
       answer:
-        "In most jurisdictions. In some jurisdictions, it is encouraged. In one jurisdiction, it is mandatory.",
+        "Legal in all jusisdictions leaf blowers are legal. In some jurisdictions, it is encouraged. In one jurisdiction, it is mandatory.",
       askedBy: "Concerned Neighbor",
     },
     {
@@ -100,7 +101,7 @@ Backed by our 30-day "they heard you" guarantee. Terms apply. Everyone applies.`
   ],
   termsRef: "section-4b",
   warnings: [
-    "WARNING: This is a parody store. Do not amplify any whistler. Do not wear this device. Do not whistle. We are serious about that part.",
+    "WARNING: Do not amplify any whistler. Do not wear this device. Do not whistle. We are serious about that part.",
   ],
   heroPath: "the-whistler-enhancer/hero.webp",
   galleryPaths: [

@@ -26,6 +26,7 @@ import type { Product } from "./types";
 export const product = {
   slug: "",
   name: "",
+  createdAt: "2025-11-01",
   brand: "",
   priceCents: 0,
   compareAtCents: undefined,

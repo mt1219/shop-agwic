@@ -12,7 +12,7 @@ export function SortSelectMobile({
     current: string
 }) {
     const options = [
-        { value: 'default', label: 'Default' },
+        { value: 'newest', label: 'Newest' },
         { value: 'price-asc', label: 'Price ↑' },
         { value: 'price-desc', label: 'Price ↓' },
         { value: 'name', label: 'Name' },
@@ -33,8 +33,8 @@ export function SortSelectMobile({
                         key={opt.value}
                         href={href}
                         className={`shrink-0 h-8 px-3 text-xs rounded-full border flex items-center whitespace-nowrap transition-colors ${isActive
-                                ? 'bg-primary text-primary-ink border-primary font-semibold'
-                                : 'bg-surface text-ink-muted border-border hover:border-ink-muted'
+                            ? 'bg-primary text-primary-ink border-primary font-semibold'
+                            : 'bg-surface text-ink-muted border-border hover:border-ink-muted'
                             }`}
                     >
                         {opt.label}

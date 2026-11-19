@@ -2,6 +2,7 @@ import type { Product } from "@/lib/products/types";
 
 export const product = {
   slug: "slow-driver-deterrent",
+  createdAt: "2025-11-8",
   name: "Slow Driver Deterrent",
   brand: "AGWIC Automotive",
   priceCents: 1999,

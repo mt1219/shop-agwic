@@ -17,3 +17,10 @@ export function getRelatedProducts(product: Product): Product[] {
     .map((slug) => products.find((p) => p.slug === slug))
     .filter((p): p is Product => Boolean(p));
 }
+
+export function getNewestProducts(limit?: number): Product[] {
+  const sorted = [...products].sort((a, b) =>
+    b.createdAt.localeCompare(a.createdAt),
+  );
+  return limit ? sorted.slice(0, limit) : sorted;
+}

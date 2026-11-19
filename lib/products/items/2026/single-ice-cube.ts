@@ -2,6 +2,7 @@ import type { Product } from "@/lib/products/types";
 
 export const product = {
   slug: "single-ice-cube",
+  createdAt: "2025-11-8",
   name: "A Single Ice Cube, Hand-Delivered",
   brand: "AGWIC Fresh",
   priceCents: 4000,

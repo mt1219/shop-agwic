@@ -2,6 +2,7 @@ import type { Product } from "@/lib/products/types";
 
 export const product = {
   slug: "humane-squirrel-eliminator",
+  createdAt: "2026-11-18",
   name: "The Humane Squirrel Eliminator™",
   brand: "SquirrelPeace Industries",
   priceCents: 4999,

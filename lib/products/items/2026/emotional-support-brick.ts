@@ -2,6 +2,7 @@ import type { Product } from "@/lib/products/types";
 
 export const product = {
   slug: "emotional-support-brick",
+  createdAt: "2025-06-01",
   name: "Emotional Support Brick",
   brand: "AGWIC Home",
   priceCents: 999,

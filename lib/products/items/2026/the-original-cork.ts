@@ -2,6 +2,7 @@ import type { Product } from "@/lib/products/types";
 
 export const product = {
   slug: "the-original-cork",
+  createdAt: "2025-11-10",
   name: "The Original Cork™",
   brand: "CorkCo",
   priceCents: 2999,

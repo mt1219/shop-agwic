@@ -39,7 +39,7 @@ async function ShopContent({
     const params = await searchParams
     const activeCategory = params.category ? getCategory(params.category) : undefined
     const query = params.q?.trim().toLowerCase() ?? ''
-    const sort = params.sort ?? 'default'
+    const sort = params.sort ?? 'newest'
 
     let filtered = products
     if (activeCategory) {
@@ -56,7 +56,9 @@ async function ShopContent({
 
     // Sort
     const sorted = [...filtered]
-    if (sort === 'price-asc') sorted.sort((a, b) => a.priceCents - b.priceCents)
+    if (sort === 'newest') {
+        sorted.sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+    } else if (sort === 'price-asc') sorted.sort((a, b) => a.priceCents - b.priceCents)
     else if (sort === 'price-desc') sorted.sort((a, b) => b.priceCents - a.priceCents)
     else if (sort === 'name') sorted.sort((a, b) => a.name.localeCompare(b.name))
 
@@ -94,7 +96,8 @@ async function ShopContent({
                     </h2>
                     <ul className="space-y-1">
                         {[
-                            { value: 'default', label: 'Default' },
+                            { value: 'newest', label: 'Newest' },
+                            // { value: 'default', label: 'Default' },
                             { value: 'price-asc', label: 'Price: Low to High' },
                             { value: 'price-desc', label: 'Price: High to Low' },
                             { value: 'name', label: 'Name: A–Z' },

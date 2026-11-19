@@ -4,6 +4,7 @@ import type { Product } from "@/lib/products/types";
 // Replace with a real product when one is ready.
 export const product = {
   slug: "placeholder-health",
+  createdAt: "2025-11-8",
   name: "Placeholder Product (Health & Household)",
   brand: "AGWIC",
   priceCents: 1999,

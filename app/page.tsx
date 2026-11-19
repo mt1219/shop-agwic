@@ -3,6 +3,7 @@ import { products } from '@/lib/products'
 import { categories } from '@/lib/categories'
 import { productImageUrl, formatPrice } from '@/lib/images'
 import type { Metadata } from 'next'
+import { getNewestProducts } from '@/lib/products'
 
 export const metadata: Metadata = {
   title: 'AGWIC — Everything. Everywhere. Eventually.',
@@ -12,7 +13,10 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   // Featured: first 4 products (stable order, no date/random)
-  const featured = products.slice(0, 4)
+  // const featured = products.slice(0, 4)
+
+  //featured newest first
+  const featured = getNewestProducts(4)
 
   return (
     <>

@@ -29,6 +29,7 @@ export type Product = {
   priceCents: number;
   compareAtCents?: number;
   category: CategorySlug;
+  createdAt: string;
   /** One-line teaser. Card + share cards + meta description. */
   blurb: string;
   /** Amazon-style feature bullets. Use * † ‡ § ¶ markers to attach footnotes. */
