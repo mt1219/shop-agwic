@@ -45,14 +45,7 @@ export function ShareButtons({ product }: { product: { slug: string; name: strin
             build: (u: string) =>
                 `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(u)}&description=${encodeURIComponent(product.name)}`,
         },
-        {
-            name: 'Instagram',
-            icon: '◉',
-            color: '#E1306C',
-            // Instagram doesn't support web share URLs. This opens Instagram.
-            // The user copies the link and pastes it in their story/post.
-            build: () => 'https://www.instagram.com/',
-        },
+
     ]
 
     return (
@@ -80,7 +73,7 @@ export function ShareButtons({ product }: { product: { slug: string; name: strin
                 ))}
                 <button
                     onClick={copyLink}
-                    className="inline-flex items-center gap-1.5 px-3 h-8 border border-border rounded text-xs text-ink hover:border-ink transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 h-8 border border-border rounded text-xs text-ink hover:border-ink bg-ink-muted transition-colors"
                 >
                     {copied ? 'Copied' : 'Copy link'}
                 </button>

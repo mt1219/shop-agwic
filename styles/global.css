@@ -13,6 +13,7 @@
   --color-stripe:        var(--theme-stripe);
   --color-warning:       var(--theme-warning);
   --color-warning-bg:    var(--theme-warning-bg);
+  --color-blue:    var(--theme-warning-bg);
 
   --font-sans:    var(--font-inter);
   --font-display: var(--font-fraunces);
