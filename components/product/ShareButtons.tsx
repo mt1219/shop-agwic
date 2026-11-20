@@ -27,20 +27,31 @@ export function ShareButtons({ product }: { product: { slug: string; name: strin
         {
             name: 'Facebook',
             icon: 'f',
+            color: '#1877F2',
             build: (u: string) =>
                 `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(u)}`,
         },
         {
             name: 'X',
             icon: '𝕏',
+            color: '#000000',
             build: (u: string) =>
                 `https://twitter.com/intent/tweet?url=${encodeURIComponent(u)}&text=${encodeURIComponent(product.name)}`,
         },
         {
             name: 'Pinterest',
             icon: 'P',
+            color: '#E60023',
             build: (u: string) =>
                 `https://pinterest.com/pin/create/button/?url=${encodeURIComponent(u)}&description=${encodeURIComponent(product.name)}`,
+        },
+        {
+            name: 'Instagram',
+            icon: '◉',
+            color: '#E1306C',
+            // Instagram doesn't support web share URLs. This opens Instagram.
+            // The user copies the link and pastes it in their story/post.
+            build: () => 'https://www.instagram.com/',
         },
     ]
 
@@ -60,7 +71,8 @@ export function ShareButtons({ product }: { product: { slug: string; name: strin
                                 metadata: { network: n.name.toLowerCase() },
                             })
                         }
-                        className="inline-flex items-center gap-1.5 px-3 h-8 border border-border rounded text-xs text-ink hover:border-ink transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 h-8 rounded text-xs font-semibold text-white transition-opacity hover:opacity-90"
+                        style={{ backgroundColor: n.color }}
                     >
                         <span className="font-mono">{n.icon}</span>
                         {n.name}
