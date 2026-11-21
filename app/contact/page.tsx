@@ -207,6 +207,16 @@ async function ContactContent({
                     public on all days the office is closed.
                 </p>
             </section>
+            <section className="border-t border-border pt-6">
+                <h2 className="font-display text-lg text-ink mb-2">Have a product idea?</h2>
+                <p className="text-ink-muted">
+                    Visit the{' '}
+                    <Link href="/suggestions" className="text-primary underline underline-offset-2">
+                        Suggestion Bin
+                    </Link>
+                    . Tell us what to make. We will consider it.
+                </p>
+            </section>
 
             <p className="fine-print pt-6 border-t border-border">
                 AGWIC is a subsidiary of American Global Worldwide International
@@ -214,6 +224,7 @@ async function ContactContent({
                 parent company. The parent company is in a meeting.
             </p>
         </div>
+
     )
 }
 

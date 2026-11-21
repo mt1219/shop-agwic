@@ -35,6 +35,18 @@ export default function AdminHomePage() {
                     <p className="text-sm text-ink-muted">
                         Pending submissions. The CRT is reviewing. The CRT is always reviewing.
                     </p>
+
+                </Link>
+                <Link
+                    href="/admin/suggestions"
+                    className="block p-6 border border-border bg-surface rounded hover:border-ink transition-colors"
+                >
+                    <h2 className="font-display text-xl text-ink mb-1">
+                        Suggestion Bin Queue
+                    </h2>
+                    <p className="text-sm text-ink-muted">
+                        Pending suggestions. The CRT is reviewing. The CRT is always reviewing.
+                    </p>
                 </Link>
 
                 <div className="block p-6 border border-border bg-stripe rounded opacity-60 cursor-not-allowed">

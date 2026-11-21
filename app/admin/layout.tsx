@@ -7,6 +7,7 @@ const nav = [
     { href: '/admin/reviews', label: 'Content Review Queue' },
     { href: '/admin/emails', label: 'Email Composer', badge: 'soon' },
     { href: '/admin/signups', label: 'Signups', badge: 'soon' },
+    { href: '/admin/suggestions', label: 'Suggestion Bin' },
 ]
 
 export default function AdminLayout({ children }: { children: ReactNode }) {

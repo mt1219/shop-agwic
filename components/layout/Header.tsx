@@ -31,6 +31,10 @@ export function Header() {
                     <Link href="/shop" className="hidden md:inline hover:text-ink transition-colors">
                         All Products
                     </Link>
+
+                    <Link href="/suggestions" className="hidden md:inline hover:text-ink transition-colors">
+                        Suggestions
+                    </Link>
                     <Link href="/account" className="hidden md:inline hover:text-ink transition-colors" aria-label="Account">
                         Account
                     </Link>

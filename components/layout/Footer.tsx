@@ -68,6 +68,18 @@ export async function Footer() {
                     ))}
                 </div>
 
+
+                <section className="border-t border-border pt-6">
+                    <h2 className="font-display text-lg text-ink mb-2">Have a product idea?</h2>
+                    <p className="text-ink-muted">
+                        Visit the{' '}
+                        <Link href="/suggestions" className="text-primary underline underline-offset-2">
+                            Suggestion Bin
+                        </Link>
+                        . Tell us what to make. We will consider it.
+                    </p>
+                </section>
+
                 <div className="fine-print mt-10 pt-6 border-t border-border space-y-2">
                     <p>
                         AGWIC is a subsidiary of American Global Worldwide International Corporation, which is a
